@@ -32,7 +32,16 @@ public class CartController {
 					break;
 			case "error":
 				mv.addObject("message", "Something went wrong!");
-				break;			
+				break;	
+				
+			case "added":
+				mv.addObject("message", "Product added");
+				break;
+				
+			case "deleted":
+				mv.addObject("message", "Product Deleted ");
+				break;
+		
 			}
 			
 		}

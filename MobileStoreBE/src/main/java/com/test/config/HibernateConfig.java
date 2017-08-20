@@ -1,11 +1,8 @@
 
 package com.test.config;
 
-
-
 import java.util.Properties;
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -21,10 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = { "com.test" })
 @EnableTransactionManagement
 
-
-
-
-
 public class HibernateConfig {
 // Database Configuration
 	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/mobilestore";
@@ -33,8 +26,6 @@ public class HibernateConfig {
 	private final static String DATABASE_USERNAME = "sa";
 	private final static String DATABASE_PASSWORD = "";
 
-	
-	
 	@Bean("dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource datasource = new BasicDataSource();

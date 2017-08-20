@@ -189,7 +189,7 @@ div.vertical-line {
 								<tr>
 									<td><div class="row">
 											<div class="col-xs-2">
-												<a href="${context}/view/${product.imagePath}/${product.productName}"><img
+												<a href="${context}/view/${product.productId}/${product.productName}/${product.imagePath}"><img
 													src="${context}/res/img/${product.imagePath}.jpg"
 													style="height: 100px; width: 60px;" /></a>
 											</div>
