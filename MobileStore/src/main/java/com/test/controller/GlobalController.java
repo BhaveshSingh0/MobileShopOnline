@@ -14,9 +14,6 @@ import com.test.Model.UserModel;
 
 @ControllerAdvice
 public class GlobalController {
-
-	
-	
 	
 	@Autowired
 	private HttpSession session;
@@ -32,7 +29,6 @@ public class GlobalController {
 		
 		if(session.getAttribute("userModel")==null) {
 			
-			// add the user model
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			
 			User user = userDAO.getByEmail(authentication.getName());
@@ -41,29 +37,24 @@ public class GlobalController {
 				
 			
 				 
-				// create a new UserModel object to pass the user details
 				userModel = new UserModel();
-				userModel.setCartLineCount(userDAO.cartlineCount(user.getCart().getId()));
-				userModel.setId(user.getMobile());
+			    userModel.setId(user.getMobile());
 				userModel.setEmail(user.getEmail_add());
 				userModel.setRole(user.getRole());
 				userModel.setFullName(user.getFirstname() + " " + user.getLastname());
 				
 				if(userModel.getRole().equals("USER")) {
-					// set the cart only if user is a buyer
-					userModel.setCart(user.getCart());					
+					userModel.setCart(user.getCart());
+					userModel.setCartLineCount(userDAO.cartlineCount(user.getCart().getId()));
+					
 				}
 				
-				//set the userModel in the session
 				session.setAttribute("userModel", userModel);
 				
 				return userModel;
 				
 				
 			}
-			
-			
-			
 			
 		}
 		
