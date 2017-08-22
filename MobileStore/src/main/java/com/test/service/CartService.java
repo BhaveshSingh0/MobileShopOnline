@@ -36,7 +36,7 @@ public class CartService {
 	}
 	
 	
-	
+	//testing 
 	
 	
 	
@@ -50,7 +50,8 @@ public class CartService {
 		}
 		else {
 			
-			//delete the cartline count by one after deleting 
+			//delete the cartline count by one after deleting
+			//Model
 			UserModel userModel = (UserModel)session.getAttribute("userModel");
 	         userModel.setCartLineCount(userModel.getCartLineCount() - 1);
 			
