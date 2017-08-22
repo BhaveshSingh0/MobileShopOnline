@@ -12,6 +12,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Header</title>
+
+
+<script>
+
+
+
+
+</script>
 <style>
 nav li {
 	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
@@ -75,13 +83,11 @@ h1 {
 
 
 
-					<form class="navbar-form navbar-left">
-						<div class="form-group">
-							<input type="text" class="form-control" id="tags"
-								style="padding-right: 70px;" placeholder="Search Mobile Brand">
-						</div>
-						<button type="submit" class="btn btn-default">Search</button>
-					</form>
+					<div class="navbar-form navbar-left">
+					
+					
+					
+					</div>
 
 
 					<ul class="nav navbar-nav navbar-right">
@@ -97,7 +103,7 @@ h1 {
 
 							<security:authorize access="hasAuthority('USER')">
 
-								<li><a href="${context}/cart/show">Cart - ${userModel.cartLineCount}
+								<li><a href="${context}/cart/show">Cart - <span class="badge">${userModel.cartLineCount}</span>
 										&nbsp;<i class="fa fa-shopping-cart"></i></a></li>
 
 							</security:authorize>

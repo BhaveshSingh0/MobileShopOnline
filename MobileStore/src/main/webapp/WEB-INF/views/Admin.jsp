@@ -235,6 +235,8 @@
 							<input type="submit" class="btn" value="Add Category"
 								id="category">
 						</div>
+						 <input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
 
 					</form>
 				</div>
@@ -289,7 +291,8 @@
 							<input type="submit" class="btn" value="Add Product"
 								id="category">
 						</div>
-
+                           <input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
 					</form>
 				</div>
 

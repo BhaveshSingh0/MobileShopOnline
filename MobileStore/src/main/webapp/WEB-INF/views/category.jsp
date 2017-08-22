@@ -30,9 +30,9 @@
 
 
 
-	<div class="col-md-12">
+	<div class="col-md-12"  >
 		<b class="lead">Category</b> 
-		<div class="list-group" style=" ">
+		<div class="list-group" style=" "  >
 		<br>
 			<c:forEach items="${category}" var="category">
 				<a href="${context}/show/category/${category.id}/products"

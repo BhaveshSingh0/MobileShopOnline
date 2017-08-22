@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product {
 
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;

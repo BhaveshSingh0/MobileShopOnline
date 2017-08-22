@@ -1,6 +1,7 @@
 package com.test.controller;
 
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,14 @@ public class productController {
 	private CategoryDAO categoryDAO;
 
 	// showAllProducts
+	
+	@RequestMapping(value = "/getallproductName")
+	public ArrayList<String>  getAllProduct(){
+		ArrayList<String>  s = new ArrayList<>();
+		s.add("bhavesh");
+		s.add("tets");
+		return s ;
+	}
 
 	 @RequestMapping(value = "/show/all/products")
 	public ModelAndView showAllProducts() {

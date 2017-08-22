@@ -2,6 +2,8 @@ package com.test.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +27,11 @@ public class PageController {
 
 	@Autowired
 	private SellerDAO sellerDAO;
-
+ 
+	@Autowired
+	private HttpSession session;
+	
+	
 	@Autowired
 	private CategoryDAO categoryDAO;
 
@@ -55,6 +61,9 @@ public class PageController {
 	@RequestMapping(value = "/perform-logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		
+		
+		// destroys all the session object
+		session.invalidate();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		if(auth!=null) {
@@ -75,8 +84,10 @@ public class PageController {
 	@RequestMapping(value = { "/", "index" })
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
-		System.out.println("hiiiiii");
-     	mv.addObject("category", categoryDAO.listCat());
+        session.setAttribute("pro", productDAO.listProduct());
+		mv.addObject("category", categoryDAO.listCat());
+      
+     	
 		return mv;
 	}
 	
