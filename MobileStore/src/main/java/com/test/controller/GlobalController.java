@@ -45,7 +45,7 @@ public class GlobalController {
 				
 				if(userModel.getRole().equals("USER")) {
 					userModel.setCart(user.getCart());
-					userModel.setCartLineCount(userDAO.cartlineCount(user.getCart().getId()));
+					userModel.setCartLineCount(user.getCart().getCartLines());
 					
 				}
 				

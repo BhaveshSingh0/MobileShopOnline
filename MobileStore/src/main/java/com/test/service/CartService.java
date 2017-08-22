@@ -49,6 +49,11 @@ public class CartService {
 			return "result=error";
 		}
 		else {
+			
+			//delete the cartline count by one after deleting 
+			UserModel userModel = (UserModel)session.getAttribute("userModel");
+	         userModel.setCartLineCount(userModel.getCartLineCount() - 1);
+			
 			// update the cart
 			Cart cart = this.getCart();
 			cart.setGrandTotal(cart.getGrandTotal() - cartLine.getTotal());
@@ -84,9 +89,15 @@ public String addCartLine(int productId) {
 			
 			cartLineDAO.add(cartLine);
 			
+			
+			// set the cartLine Count By 1 after adding to cartLine
+		UserModel userModel = (UserModel)session.getAttribute("userModel");
+         userModel.setCartLineCount(userModel.getCartLineCount() + 1);
+			
 			cart.setCartLines(cart.getCartLines() + 1);
 			cart.setGrandTotal(cart.getGrandTotal() + cartLine.getTotal());
 			cartLineDAO.updateCart(cart);
+		    
 			response = "result=added";
 			
 			
