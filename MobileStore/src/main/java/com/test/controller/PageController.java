@@ -1,5 +1,8 @@
 package com.test.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -86,14 +89,13 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("index");
         session.setAttribute("pro", productDAO.listProduct());
 		mv.addObject("category", categoryDAO.listCat());
-      
+        List<String> s = productDAO.getAllName();
+        session.setAttribute("user", s);
      	
 		return mv;
 	}
 	
 	
-	
-
 	@RequestMapping(value = "/Admin")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView("Admin");

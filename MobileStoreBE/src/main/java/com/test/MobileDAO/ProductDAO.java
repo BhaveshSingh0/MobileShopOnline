@@ -10,7 +10,8 @@ public interface ProductDAO {
 	boolean addProduct(Product product);
 	List<Product> listProduct();
 	boolean addPdescription(ProductDescp productDesc);
-	
+     List<String> getAllName();
 	ProductDescp viewproduct(String imagepath);
 	Product get(int id);
+	List<Product> getByName(String name);
 }

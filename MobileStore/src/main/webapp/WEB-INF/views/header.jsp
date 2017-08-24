@@ -10,16 +10,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Header</title>
 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
 
+.bs-autocomplete{
+  background-color: #fff;
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.4);
+}
+
+
+
+</style>
 <script>
+  $( function() {
+	 var p = document.getElementById("tag1").value;
 
-
-
-
-</script>
+    var availableTags = new Array();
+    p =  p.slice(1,-1);
+    availableTags = p.split(',');
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
 <style>
 nav li {
 	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
@@ -80,13 +99,17 @@ h1 {
 
 					</ul>
 
-
+   
+					<input type="hidden" id="tag1" value="${user}" />	
+				
 
 
 					<div class="navbar-form navbar-left">
-					
-					
-					
+				<form  action="${context}/show/product" method="get" >
+				
+				<input type="text" id="tags" name="mobilename"  class="form-control bs-autocomplete"  placeholder="Search Mobile"  style="width: 400px; font-size: 18px;" />
+				<input type="submit" class="btn btn-primary" value="Search	" />
+				</form>
 					</div>
 
 

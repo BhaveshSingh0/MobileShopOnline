@@ -2,6 +2,7 @@ package com.test.controller;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,14 +38,34 @@ public class productController {
 
 	// showAllProducts
 	
-	@RequestMapping(value = "/getallproductName")
-	public ArrayList<String>  getAllProduct(){
-		ArrayList<String>  s = new ArrayList<>();
-		s.add("bhavesh");
-		s.add("tets");
-		return s ;
-	}
+	
+	
+	@RequestMapping(value = "/getMachedNames", method = 
+	        RequestMethod.GET)
+	    public @ResponseBody   List<String> getMachedNames(){
+	    
+	    List<String> matchName =  new ArrayList<>();
+        matchName.add("java");
+        matchName.add("bhavesh");
+        matchName.add("shubham");
+        matchName.add("test");
+        matchName.add("test1");
+	    return matchName;
+	    }
+	
+	
 
+	@RequestMapping(value="/show/product")
+	public ModelAndView getall(	@RequestParam("mobilename") String name){
+		ModelAndView mv =  new ModelAndView("item");
+		mv.addObject("clickOnAllProducts", true);
+		mv.addObject("category", categoryDAO.listCat());
+		System.out.println(name);
+		mv.addObject("product", productDAO.getByName(name));
+        return mv;
+        
+	}
+	
 	 @RequestMapping(value = "/show/all/products")
 	public ModelAndView showAllProducts() {
 		ModelAndView mv = new ModelAndView("item");
