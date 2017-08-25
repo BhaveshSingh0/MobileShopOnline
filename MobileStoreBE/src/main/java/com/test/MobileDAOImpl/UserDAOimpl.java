@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.test.MobileDAO.UserDAO;
 import com.test.MobileDTO.Address;
+import com.test.MobileDTO.TransactionDetail;
 import com.test.MobileDTO.User;
 
 
@@ -110,6 +111,22 @@ try {
 				e.printStackTrace();
 				return 0;
 			}
+	}
+
+
+
+	@Override
+	public boolean addTransactionDetail(TransactionDetail detail) {
+		try {
+
+			 sessionFactory.getCurrentSession().persist(detail);
+		
+           return true;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

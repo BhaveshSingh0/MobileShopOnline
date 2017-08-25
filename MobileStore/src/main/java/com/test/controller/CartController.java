@@ -1,13 +1,26 @@
 
 package com.test.controller;
 
+import java.util.Date;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.MobileDAO.CartLineDAO;
+import com.test.MobileDAO.UserDAO;
+import com.test.MobileDTO.Address;
+import com.test.MobileDTO.Cart;
+import com.test.MobileDTO.CartLine;
+import com.test.MobileDTO.TransactionDetail;
+import com.test.Model.UserModel;
 import com.test.service.CartService;
 
 
@@ -16,9 +29,20 @@ import com.test.service.CartService;
 public class CartController {
 
 	
+	@Autowired
+	private HttpSession session;
+	
+	
+	@Autowired
+	private CartLineDAO cartLineDAO;
+	
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private UserDAO userDAO;
+
 	
 	
 	@RequestMapping("/show")
@@ -54,6 +78,8 @@ public class CartController {
 	}
 	
 	
+
+	
 	
 	@RequestMapping("/{cartLineId}/update")
 	public String updateCart(@PathVariable int cartLineId, @RequestParam int count) {		
@@ -62,6 +88,77 @@ public class CartController {
 		
 	}
 	
+	@RequestMapping("/billingAddress")
+	public ModelAndView billing(){		
+		ModelAndView mv =  new ModelAndView("bill");
+		mv.addObject("cartLines", cartService.getCartLines());		
+		return mv ;
+		
+	}
+	
+	@RequestMapping("/add/detail")
+	public ModelAndView addDetail(@ModelAttribute("Address") Address address){		
+	//	mv.addObject("cartLines", cartService.getCartLines());		
+		String name = "";
+		name = "Product" + UUID.randomUUID().toString().substring(15).toUpperCase();
+		UserModel  userModel=(UserModel)session.getAttribute("userModel");
+		String message = "Your Order No - "+name+"  will be Delivered in 7 days "
+				+ " \n Please keep "+userModel.getCart().getGrandTotal()+" \n Mobile no: "+userModel.getMobile()+" ";
+	
+		boolean  x =  userDAO.addAddress(address);
+		if(x ==  true) {
+			//boolean b =  cartService.sendMail(message);
+			if( x == true ){
+				
+				TransactionDetail d =  new TransactionDetail();
+				d.setDate( new Date());
+				d.setMobile(userModel.getMobile());
+				d.setTotal(userModel.getCart().getGrandTotal());
+				d.setTransaction_id(name);
+				d.setUser_mail(userModel.getEmail());
+				d.setName(userModel.getFullName());
+				
+				 boolean val = userDAO.addTransactionDetail(d);
+				 if(val== true){
+					  
+					boolean val2 = cartLineDAO.deleteCartlines(userModel.getCart().getId());
+					if(val2==true)  {
+						Cart c =  new Cart();
+						c.setCartLines(0);
+						c.setGrandTotal(0);
+						cartLineDAO.updateCart(c);
+						
+					}
+					
+						ModelAndView mv =  new ModelAndView("welcome");
+						return mv ;	
+				 }
+				 else{
+						ModelAndView mv =  new ModelAndView("error");
+						mv.addObject("message", "SomethingWent wrong in TransactionDetail ");
+						return mv ;	
+				 }
+				
+			}
+			else{
+				ModelAndView mv =  new ModelAndView("error");
+				mv.addObject("message", "SomethingWent wrong  in Mailing");
+				return mv ;
+			}
+			
+		}
+		else{
+			ModelAndView mv =  new ModelAndView("error");
+			mv.addObject("message", "SomethingWent wrong  in Address");
+			return mv ;
+		}
+		
+		
+		
+		
+	}
+	
+	
 	
 	@RequestMapping("/{cartLineId}/delete")
 	public String deleteCartLine(@PathVariable int cartLineId) {		
@@ -69,9 +166,6 @@ public class CartController {
 		return "redirect:/cart/show?"+response;
 		
 	}
-	
-	
-
 	
 	
 	@RequestMapping("/add/{productId}/product")

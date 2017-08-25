@@ -12,6 +12,16 @@ public class UserModel implements Serializable{
 
 	private int cartLineCount ; 
 	
+	
+	private String  mobile ;
+	
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	private String id;
 	public int getCartLineCount() {
 		return cartLineCount;
@@ -19,6 +29,16 @@ public class UserModel implements Serializable{
 	public void setCartLineCount(int cartLineCount) {
 		this.cartLineCount = cartLineCount;
 	}
+	
+	private String pass ;
+	
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	private String fullName;
 	private String email;
 	private String role;

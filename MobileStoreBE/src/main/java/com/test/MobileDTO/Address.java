@@ -10,88 +10,41 @@ import javax.persistence.Id;
 
 @Entity
 public class Address implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * private fields
-	 * */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	
 	@Column(name = "user_id")
-	private int userId;
-	
-	public int getUserId() {
-		return userId;
+	public String getMobile() {
+		return Mobile;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setMobile(String mobile) {
+		Mobile = mobile;
 	}
 
-	@Column(name = "address_line_one")
-	//@NotBlank(message = "Please enter address line one!")
-	private String addressLineOne;
+	private String Mobile;
 	
-	@Column(name = "address_line_two")	
-	//@NotBlank(message = "Please enter address line two!")
-	private String addressLineTwo;
-
-	//@NotBlank(message = "Please enter city name!")
-	private String city;
-
-	//@NotBlank(message = "Please enter state name!")
-	private String state;
-	
-	//@NotBlank(message = "Please enter country!")
-	private String country;
-	
-	@Column(name = "postal_code")
-	//@NotBlank(message = "Please enter postal code!")	
-	private String postalCode;
-	
-	@Column(name = "is_shipping")
-	private boolean shipping;
-	
-	@Column(name = "is_billing")
-	private boolean billing;
-	
-	/*
-	 * setter and getter for the fields
-	 * */
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getAddressLineOne() {
-		return addressLineOne;
+	public String getCompleteAddress() {
+		return completeAddress;
 	}
-	public void setAddressLineOne(String addressLineOne) {
-		this.addressLineOne = addressLineOne;
+	public void setCompleteAddress(String completeAddress) {
+		this.completeAddress = completeAddress;
 	}
-	public String getAddressLineTwo() {
-		return addressLineTwo;
+	public String getZip() {
+		return zip;
 	}
-	public void setAddressLineTwo(String addressLineTwo) {
-		this.addressLineTwo = addressLineTwo;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 	public String getCountry() {
 		return country;
@@ -99,29 +52,38 @@ public class Address implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String getPostalCode() {
-		return postalCode;
+	public String getState() {
+		return state;
 	}
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+	public void setState(String state) {
+		this.state = state;
 	}
-	public boolean isShipping() {
-		return shipping;
+	public String getCity() {
+		return city;
 	}
-	public void setShipping(boolean shipping) {
-		this.shipping = shipping;
+	public void setCity(String city) {
+		this.city = city;
 	}
-	public boolean isBilling() {
-		return billing;
+	public String getRoute() {
+		return route;
 	}
-	public void setBilling(boolean billing) {
-		this.billing = billing;
+	public void setRoute(String route) {
+		this.route = route;
 	}
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", addressLineOne=" + addressLineOne + ", addressLineTwo=" + addressLineTwo
-				+ ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
-				+ ", shipping=" + shipping + ", billing=" + billing + "]";
+	public String getStreet() {
+		return street;
 	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+
+
+	private String completeAddress  ;
+	private String zip , country ,  state , city ,route ,street ;
 	
+	
+	
+	
+		
 }

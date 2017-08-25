@@ -1,8 +1,7 @@
 package com.test.controller;
 
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,20 +36,6 @@ public class productController {
 
 	// showAllProducts
 	
-	
-	
-	@RequestMapping(value = "/getMachedNames", method = 
-	        RequestMethod.GET)
-	    public @ResponseBody   List<String> getMachedNames(){
-	    
-	    List<String> matchName =  new ArrayList<>();
-        matchName.add("java");
-        matchName.add("bhavesh");
-        matchName.add("shubham");
-        matchName.add("test");
-        matchName.add("test1");
-	    return matchName;
-	    }
 	
 	
 

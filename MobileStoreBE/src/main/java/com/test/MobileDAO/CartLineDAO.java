@@ -17,7 +17,7 @@ public interface CartLineDAO {
 	public List<CartLine> listAvailable(int cartId);
 	public CartLine getByCartAndProduct(int cartId, int productId);
 	
-	
+	public  boolean deleteCartlines( int CartId);
 
 	
 	// udpate a cart

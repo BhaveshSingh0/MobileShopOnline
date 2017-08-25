@@ -46,7 +46,10 @@ public class GlobalController {
 				if(userModel.getRole().equals("USER")) {
 					userModel.setCart(user.getCart());
 					userModel.setCartLineCount(user.getCart().getCartLines());
-					
+				 	userModel.setMobile(user.getMobile());
+				}
+				if(userModel.getRole().equals("ADMIN")){
+					userModel.setPass(user.getPass());
 				}
 				
 				session.setAttribute("userModel", userModel);
