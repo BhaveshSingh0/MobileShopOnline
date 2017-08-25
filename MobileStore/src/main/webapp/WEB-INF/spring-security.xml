@@ -8,6 +8,9 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+
+      <http pattern="/resources/**" security="none"/>
+
 	<context:component-scan base-package="com.test" />
 	<http>
 		<intercept-url pattern="/Admin/**" access="hasAuthority('ADMIN')" />

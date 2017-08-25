@@ -2,7 +2,6 @@ package com.test.Model;
 
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.test.MobileDTO.Cart;
 

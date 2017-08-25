@@ -9,6 +9,18 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-webflow</artifactId>
+			<version>2.4.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.0-b07</version>
@@ -19,7 +31,7 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>4.2.3.RELEASE</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>4.2.3.RELEASE</version>
@@ -38,6 +50,11 @@
 			<version>4.3.9.RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -48,6 +65,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
 			<version>4.3.9.RELEASE</version>
 		</dependency>
 
@@ -69,7 +92,6 @@
 			<artifactId>MobileStoreBE</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

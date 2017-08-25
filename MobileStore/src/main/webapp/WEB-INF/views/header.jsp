@@ -14,7 +14,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Header</title>
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
@@ -29,7 +31,8 @@
 </style>
 <script>
   $( function() {
-	 var p = document.getElementById("tag1").value;
+	 
+	  var p = document.getElementById("tag1").value;
 
     var availableTags = new Array();
     p =  p.slice(1,-1);
