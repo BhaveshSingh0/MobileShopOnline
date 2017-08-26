@@ -44,7 +44,6 @@ public class productController {
 		ModelAndView mv =  new ModelAndView("item");
 		mv.addObject("clickOnAllProducts", true);
 		mv.addObject("category", categoryDAO.listCat());
-		System.out.println(name);
 		mv.addObject("product", productDAO.getByName(name));
         return mv;
         

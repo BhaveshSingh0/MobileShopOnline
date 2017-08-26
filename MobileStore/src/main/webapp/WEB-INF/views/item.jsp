@@ -238,6 +238,10 @@ div.vertical-line {
 
 
 
+	<div class="row">
+		<%@ include file="footer.jsp"%>
+	</div>
+
 
 
 	<script

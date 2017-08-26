@@ -126,7 +126,7 @@ h1 {
 
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Contact <i class="fa fa-phone"></i></a></li>
+						<li><a href="${context}/contact">Contact <i class="fa fa-phone"></i></a></li>
 
 						<security:authorize access="isAuthenticated()">
 
