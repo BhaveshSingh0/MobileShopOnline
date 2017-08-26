@@ -43,6 +43,7 @@ public class CartService {
 	@Autowired
 	private HttpSession session;
 	
+	
 	private Cart getCart() {
 		
 	return ((UserModel)session.getAttribute("userModel")).getCart();
@@ -52,7 +53,15 @@ public class CartService {
 	
 	//testing 
 	
-	
+	public boolean clearCart(){
+	 	Cart cart =  this.getCart();
+		cart.setCartLines(0);
+		cart.setGrandTotal(0);
+		UserModel userModel = (UserModel)session.getAttribute("userModel");
+		userModel.setCartLineCount(0);
+		cartLineDAO.updateCart(cart);
+     return true ;
+	}
 	
 	public String deleteCartLine(int cartLineId) {
 
@@ -174,8 +183,8 @@ public String addCartLine(int productId) {
 	
 		String host = "smtp.gmail.com";
         String port = "587";
-        String mailFrom = "bhaveshsingh322@gmail.com";
-        String password1 = "72199616110@bhavesh";
+        String mailFrom = "***************************";
+        String password1 = "**************************";
         String mailTo = email;
         String subject = "Greeting";
         String message = "Thank you "+fullname+"  "+message1+" Hope We see you again ";

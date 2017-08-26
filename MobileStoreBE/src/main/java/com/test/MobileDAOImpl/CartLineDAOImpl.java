@@ -153,9 +153,7 @@ public class CartLineDAOImpl implements CartLineDAO {
 	  e.printStackTrace();	
 	}
 	finally{
-		 session.close();
-
-	}
+			}
 		return false;
 	}
 

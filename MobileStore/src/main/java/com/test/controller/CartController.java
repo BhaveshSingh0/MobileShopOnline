@@ -7,6 +7,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import com.test.MobileDTO.Address;
 import com.test.MobileDTO.Cart;
 import com.test.MobileDTO.CartLine;
 import com.test.MobileDTO.TransactionDetail;
+import com.test.MobileDTO.User;
 import com.test.Model.UserModel;
 import com.test.service.CartService;
 
@@ -105,10 +108,13 @@ public class CartController {
 		String message = "Your Order No - "+name+"  will be Delivered in 7 days "
 				+ " \n Please keep "+userModel.getCart().getGrandTotal()+" \n Mobile no: "+userModel.getMobile()+" ";
 	
+		
+		
+		
 		boolean  x =  userDAO.addAddress(address);
 		if(x ==  true) {
-			//boolean b =  cartService.sendMail(message);
-			if( x == true ){
+			boolean b =  cartService.sendMail(message);
+			if( b == true ){
 				
 				TransactionDetail d =  new TransactionDetail();
 				d.setDate( new Date());
@@ -121,16 +127,12 @@ public class CartController {
 				 boolean val = userDAO.addTransactionDetail(d);
 				 if(val== true){
 					  
-					boolean val2 = cartLineDAO.deleteCartlines(userModel.getCart().getId());
-					if(val2==true)  {
-						Cart c =  new Cart();
-						c.setCartLines(0);
-						c.setGrandTotal(0);
-						cartLineDAO.updateCart(c);
+				 cartLineDAO.deleteCartlines(userModel.getCart().getId());
+				 cartService.clearCart();
 						
-					}
-					
+				
 						ModelAndView mv =  new ModelAndView("welcome");
+						mv.addObject("message", "Please Check your Mail");
 						return mv ;	
 				 }
 				 else{
