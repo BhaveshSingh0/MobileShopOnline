@@ -1,7 +1,6 @@
 package com.test.controller;
 
 
-
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +33,6 @@ public class productController {
 	@Autowired
 	private CategoryDAO categoryDAO;
 
-	// showAllProducts
-	
 	
 	
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +17,6 @@ import com.test.MobileDTO.CartLine;
 public class CartLineDAOImpl implements CartLineDAO {
 
 	  CartLine carline = null ;
-	
-	
-	  
 	  
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -89,34 +85,7 @@ public class CartLineDAOImpl implements CartLineDAO {
 		}
 	}	
 
-	@SuppressWarnings("unchecked")
-	@Override
-	@Transactional
-	public List<CartLine> listAvailable(int cartId) {
-		String query = "FROM CartLine WHERE cartId = :cartId AND available = :available";
-		return sessionFactory.getCurrentSession()
-								.createQuery(query)
-									.setParameter("cartId", cartId)
-									.setParameter("available", true)
-									.list();	
-	}
-
-	@Override
-	@Transactional
-	public CartLine getByCartAndProduct(int cartId, int productId) {
-		String query = "FROM CartLine WHERE cartId = :cartId AND  product.id = :productId";
-		try {
-			
-			
-			Query  q = sessionFactory.getCurrentSession().createQuery(query).setParameter("cartId", cartId)
-					.setParameter("productId", productId);
-			
-		         return (CartLine)q.uniqueResult();
-			}
-		catch(Exception ex) {
-			return null;
-		}
-	}
+	
 
 	// related to the cart
 	@Override
@@ -143,17 +112,14 @@ public class CartLineDAOImpl implements CartLineDAO {
 		
 		try{
 		Query query = session.createQuery(query1);
-	//	query.set("uid", cartId);
 		query.setParameter("uid", cartId);
 	    query.executeUpdate();
-	  //  session.flush();
 
 	}
 	catch(Exception e){
 	  e.printStackTrace();	
 	}
-	finally{
-			}
+	
 		return false;
 	}
 

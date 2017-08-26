@@ -7,8 +7,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.MobileDAO.CartLineDAO;
 import com.test.MobileDAO.UserDAO;
 import com.test.MobileDTO.Address;
-import com.test.MobileDTO.Cart;
-import com.test.MobileDTO.CartLine;
+
 import com.test.MobileDTO.TransactionDetail;
-import com.test.MobileDTO.User;
 import com.test.Model.UserModel;
 import com.test.service.CartService;
 
@@ -31,14 +27,11 @@ import com.test.service.CartService;
 @RequestMapping("/cart")
 public class CartController {
 
-	
 	@Autowired
 	private HttpSession session;
 	
-	
 	@Autowired
 	private CartLineDAO cartLineDAO;
-	
 	
 	@Autowired
 	private CartService cartService;
@@ -46,8 +39,6 @@ public class CartController {
 	@Autowired
 	private UserDAO userDAO;
 
-	
-	
 	@RequestMapping("/show")
 	public ModelAndView showCart(@RequestParam(name = "result", required=false)String result) {
 		ModelAndView mv = new ModelAndView("Cart");
@@ -103,13 +94,10 @@ public class CartController {
 	public ModelAndView addDetail(@ModelAttribute("Address") Address address){		
 	//	mv.addObject("cartLines", cartService.getCartLines());		
 		String name = "";
-		name = "Product" + UUID.randomUUID().toString().substring(15).toUpperCase();
+		name = "P" + UUID.randomUUID().toString().substring(15).toUpperCase();
 		UserModel  userModel=(UserModel)session.getAttribute("userModel");
 		String message = "Your Order No - "+name+"  will be Delivered in 7 days "
 				+ " \n Please keep "+userModel.getCart().getGrandTotal()+" \n Mobile no: "+userModel.getMobile()+" ";
-	
-		
-		
 		
 		boolean  x =  userDAO.addAddress(address);
 		if(x ==  true) {
@@ -154,9 +142,6 @@ public class CartController {
 			mv.addObject("message", "SomethingWent wrong  in Address");
 			return mv ;
 		}
-		
-		
-		
 		
 	}
 	
