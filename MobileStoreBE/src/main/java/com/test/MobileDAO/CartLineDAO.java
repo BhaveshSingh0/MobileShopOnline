@@ -12,6 +12,7 @@ public interface CartLineDAO {
 	public boolean update(CartLine cartLine);
 	public boolean delete(CartLine cartLine);
 	public List<CartLine> list(int cartId);
+	public CartLine getByCartAndProduct(int cartId, int productId);
 	
 	public  boolean deleteCartlines( int CartId);
 
