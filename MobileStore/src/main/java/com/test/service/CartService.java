@@ -183,8 +183,8 @@ public String addCartLine(int productId) {
 	
 		String host = "smtp.gmail.com";
         String port = "587";
-        String mailFrom = "***************************";
-        String password1 = "**************************";
+        String mailFrom = "bhaveshsingh322@gmail.com";
+        String password1 = "72199616110@bhavesh";
         String mailTo = email;
         String subject = "Greeting";
         String message = "Thank you "+fullname+"  "+message1+" Hope We see you again ";

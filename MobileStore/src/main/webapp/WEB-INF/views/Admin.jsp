@@ -144,38 +144,7 @@
 
 
 
-	<div class="main-area dashboard">
 
-		<div class="container">
-
-			<div class="row">
-
-				<div class="span12">
-
-					<div class="slate clearfix">
-
-						<a class="stat-column" href="#"> <span class="number">16</span>
-							<span>Products</span>
-
-						</a> <a class="stat-column" href="#"> <span class="number">452</span>
-							<span>Categories</span>
-
-						</a> <a class="stat-column" href="#"> <span class="number">$2,512</span>
-							<span>Revenue</span>
-
-						</a> <a class="stat-column" href="#"> <span class="number">348</span>
-							<span>Supplier</span>
-
-						</a>
-
-
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 
 	<div class="container">

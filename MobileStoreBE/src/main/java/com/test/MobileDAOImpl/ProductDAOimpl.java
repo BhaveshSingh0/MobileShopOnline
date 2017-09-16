@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.test.MobileDAO.ProductDAO;
+import com.test.MobileDTO.Category;
 import com.test.MobileDTO.Product;
 import com.test.MobileDTO.ProductDescp;
 
@@ -161,6 +162,64 @@ public class ProductDAOimpl  implements ProductDAO{
 		
 		
 		
+	}
+
+	@Override
+	public boolean updateProduct(Product p) {
+		try {
+			sessionFactory.getCurrentSession().update(p);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updatePdescription(ProductDescp productDesc) {
+		try {
+			sessionFactory.getCurrentSession().update(productDesc);
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean DeletePdescription(String id) {
+		try {
+			Session session = sessionFactory.openSession();
+			ProductDescp p = (ProductDescp) session.get(ProductDescp.class, id);
+			if (p != null)
+				session.delete(p);
+			session.flush();
+			session.close();
+			return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean deleteProduct(int id) {
+		try {
+			Session session = sessionFactory.openSession();
+			Product p = (Product) session.get(Product.class, id);
+			if (p != null)
+				session.delete(p);
+			session.flush();
+			session.close();
+			return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+
 	}
 
 }

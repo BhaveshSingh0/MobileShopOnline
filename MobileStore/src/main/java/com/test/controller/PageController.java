@@ -121,8 +121,7 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("AdminSeller");
 
 		mv.addObject("seller", sellerDAO.listSeller());
-		mv.addObject("category", categoryDAO.listCat());
-
+		
 		return mv;
 	}
 

@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-	
-	
+    pageEncoding="ISO-8859-1"%>
+    
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="x"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin Product</title>
 
 <link rel="stylesheet"
@@ -48,12 +48,30 @@ td {
 	href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
 	rel="stylesheet">
 
-</head>
+</head></head>
 <body>
-
 	<script
 		src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+
+<br>
+	<div class="container">
+		<c:if test="${dataStored == true }">
+			<div class="alert alert-success">
+				<strong>Success!</strong>${title}
+			</div>
+
+		</c:if>
+		<c:if test="${dataStored == false }">
+
+			<div class="alert alert-warning">
+				<strong>Warning!</strong>${title}
+
+			</div>
+		</c:if>
+
+	</div>
+	<br>
 
 	<div class="secondary-masthead">
 
@@ -126,35 +144,16 @@ td {
 
 
 								<td>
-								<div class="checkbox">
-								  <c:if test="${product.active == true}">
-										
-											<label> <input type="checkbox" id="${product.productId}"  onchange="deactiveP(${product.productId})" checked
-												data-toggle="toggle">
-											</label>
-										
-
-									</c:if>
-									
-									
-									 <c:if test="${product.active == false}">
-									
-											<label> <input type="checkbox" id="${product.productId}" onchange="activeP(${product.productId})"
-												data-toggle="toggle">
-											</label>
-										
-
-									</c:if>
-									
-									</div>
-									</td>
+								<a href="${context}/${product.productId}/${product.imagePath}/deleteProduct"
+									class="btn btn-info" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
 
 
 
 
 
-								<td><a href="${context}/${product.productId}/updateProduct"
+
+								<td><a href="${context}/${product.productName}/${product.imagePath}/updateProduct"
 									class="btn btn-info" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 
 							</tr>
@@ -172,7 +171,6 @@ td {
 		</div>
 	</div>
 </div>
-
 
 </body>
 </html>

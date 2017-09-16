@@ -11,11 +11,15 @@ public class ProductDescp {
 	private String frontCamera ;
 	private String backCamera;
 	private String color ;
-	private String SimType;
+	
+	private String SimType ;
 	private int warranty ;
 	private int ram;
 	private String display ;
 	private int rom ;
+	
+	
+	
 	
 	@Id
 	private String productId;

@@ -8,6 +8,7 @@
 <html>
 
 <head>
+<title>Admin Seller</title>
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" href="res/css/admine.css"/>
@@ -41,6 +42,79 @@
 		</div>
 
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"
+				style="background-color: white; padding: 20px; border: 1px #080808; outline: none;">
+			<div class="table-responsive" >
+				<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"
+					style="background-color: #ddd;">
+					<thead>
+						<tr>
+
+							<th>Seller Id</th>
+							<th>Seller Name</th>
+							<th>Address</th>
+							<th>Mobile</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					<c:forEach items="${seller}" var="seller">
+
+<tr>
+<td>
+${seller.sellerId}
+</td>
+
+<td>
+${seller.sellerName}
+</td>
+
+<td>
+${seller.sellerAddress}
+</td>
+<td>
+${seller.phoneNumber}
+</td>
+
+
+								<td><a href="${context}/${seller.sellerId}/deleteSeller"
+								class="btn btn-info" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+</tr>
+
+
+						</c:forEach>
+
+
+
+
+
+					</tbody>
+				</table>
+				</div>
+				</div>
+				</div>
+				</div>
+				
+	
+		
+	
+	
+	
+	
+	
+	
+	
 
 </body>
 </html>

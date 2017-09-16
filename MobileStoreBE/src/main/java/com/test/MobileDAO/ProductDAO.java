@@ -14,4 +14,9 @@ public interface ProductDAO {
 	ProductDescp viewproduct(String imagepath);
 	Product get(int id);
 	List<Product> getByName(String name);
+	boolean updatePdescription(ProductDescp productDesc);
+	boolean DeletePdescription(String id);
+	   
+	boolean updateProduct(Product p);
+	boolean deleteProduct(int id);
 }

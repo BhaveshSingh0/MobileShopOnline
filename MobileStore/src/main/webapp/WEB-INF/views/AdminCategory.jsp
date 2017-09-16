@@ -82,7 +82,7 @@
 
 							<tr>
 								<form action="${context}/Admin/deleteCategory/${category.id}"
-									method="post">
+									 >
 									
 									<td>${category.id}</td>
 									<td>${category.name}</td>
